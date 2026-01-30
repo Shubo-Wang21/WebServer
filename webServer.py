@@ -32,22 +32,20 @@ def webServer(port=13331):
 
       #This variable can store the headers you want to send for any valid or invalid request.   What header should be sent for a response that is ok?    
       #Fill in start 
-              
+      outputdata = b"HTTP/1.1 200 OK\r\n"
+      outputdata += b"Content-Type: text/html; charset=UTF-8\r\n"
+      outputdata += b"Server: MyPythonServer\r\n"
+      outputdata += b"\r\n"
       #Content-Type is an example on how to send a header as bytes. There are more!
 
       #Note that a complete header must end with a blank line, creating the four-byte sequence "\r\n\r\n" Refer to https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/TCPSockets.html
  
       #Fill in end
-      html_content = b""
       for i in f: #for line in file
-        html_content += i
+        outputdata += i
       f.close()
       #Fill in start - append your html file contents #Fill in end 
-      outputdata = b"HTTP/1.1 200 OK\r\n"
-      outputdata += b"Content-Type: text/html; charset=UTF-8\r\n"
-      outputdata += b"Server: MyPythonServer\r\n"
-      outputdata += b"\r\n"
-      outputdata += html_content
+
       #Send the content of the requested file to the client (don't forget the headers you created)!
       #Send everything as one send command, do not send one line/item at a time!
 
